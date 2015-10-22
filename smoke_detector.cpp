@@ -16,3 +16,11 @@ void Smoke_detector::setSensitivity(int value)
     _sensitivity = value;
 }
 
+string Smoke_detector::Information()
+{
+  stringstream info;
+  info << Sensor::Information();
+  info << "Sensitivity: " << _sensitivity ;
+  return info.str();
+}
+

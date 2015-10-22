@@ -1,5 +1,6 @@
 #include <iostream>
 #include "sensor.h"
+#include <sstream>
 
 using namespace std;
 
@@ -24,7 +25,6 @@ void Sensor::setActions(Action * act)
             return;
     }
     _actions.push_back(act);
-
 }
 
 void Sensor::test()
@@ -34,3 +34,23 @@ void Sensor::test()
         cur_act->execute_action();
     }
 }
+
+string Sensor::Information() 
+{
+  stringstream result;
+  result << "ID: " << _id << endl;
+  result << "Vendor: " << _vendor << endl;
+  result << "Alarm: " << _alarm << endl;
+  if(_status)
+    result << "Status: On" << endl;
+  else
+    result << "Status: Off" << endl;
+  return result.str();
+}
+
+ostream & operator<<(std::ostream & os, Sensor  *s)
+{
+  os << s->Information();
+  return os;
+}
+

@@ -9,7 +9,7 @@ public:
     Smoke_detector(int id, string vendor, string alarm, int sensitivity);
     int getSensitivity() const;
     void setSensitivity(int value);
-
+    string Information();
 private:
     int _sensitivity;
 };
