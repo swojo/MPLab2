@@ -6,6 +6,7 @@
 #include "action.h"
 #include "smoke_detector.h"
 #include "motion_sensor.h"
+#include "gas_sensor.h"
 using namespace std;
 
 int main()
@@ -25,8 +26,17 @@ int main()
     m.setActions(e);
     m.test();
 
-    cout << &m;
+    Gas_sensor g(1, "kul", "gas!");
+    g.setActions(c);
+    g.setActions(e);
+    g.setGasType("CO2");
+    g.test();
+  
+
+ /*   cout << &m;
     cout << &s;
+    */
+    cout << &g;
 
     return 0;
 }

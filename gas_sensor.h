@@ -10,8 +10,7 @@ public:
     Gas_sensor(int id, std::string vendor, std::string alarm);
     std::string getGasType() const;
     void setGasType(const std::string &value);
-    std::string toString() const;
-
+    std::string Information();
 
 private:
     std::string gasType;

@@ -15,11 +15,11 @@ void Gas_sensor::setGasType(const std::string &value)
     gasType = value;
 }
 
-string Gas_sensor::toString() const
-{
-    std::stringstream info;
-    info<<Sensor::toString();
-    info<<gasType;
-    return info.str();
-}
 
+string Gas_sensor::Information()
+{
+  stringstream info;
+  info << Sensor::Information();
+  info << "Gas Type: " <<  gasType << endl;
+  return info.str();
+}
