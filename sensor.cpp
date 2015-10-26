@@ -4,13 +4,13 @@
 
 using namespace std;
 
-Sensor::Sensor(int id, string vendor, string alarm, bool status)
+Sensor::Sensor(int id, string vendor, string alarm,  bool status)
+  :SensorComponent(status)
 {
     _id = id;
     _vendor = vendor;
     _alarm = alarm;
-    _status = status;
-
+    type = sensor;
 }
 
 Sensor::~Sensor()
@@ -18,21 +18,39 @@ Sensor::~Sensor()
 
 }
 
-void Sensor::setActions(Action * act)
+bool Sensor::setActions(Action * act)
 {
+    if(act == nullptr)
+      return false;
+
     for(Action * cur_act : _actions){
         if(act == cur_act)
-            return;
+            return false;
     }
     _actions.push_back(act);
+    return true;
 }
+
+void Sensor::activate()
+{
+  setStatus(true);
+}
+
+void Sensor::deactivate()
+{
+  setStatus(false);
+}
+
 
 void Sensor::test()
 {
-   cout << _alarm << endl;
-   for(Action * cur_act: _actions){
+  if(getStatus())
+  {
+    cout << _alarm << endl;
+    for(Action * cur_act: _actions){
         cur_act->execute_action();
-    }
+      }
+  }
 }
 
 string Sensor::Information() 
@@ -41,7 +59,7 @@ string Sensor::Information()
   result << "ID: " << _id << endl;
   result << "Vendor: " << _vendor << endl;
   result << "Alarm: " << _alarm << endl;
-  if(_status)
+  if(getStatus())
     result << "Status: On" << endl;
   else
     result << "Status: Off" << endl;

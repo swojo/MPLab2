@@ -12,7 +12,7 @@ class Group:public SensorComponent
   public:
     Group(string name, bool status = false);
     ~Group();
-    void addComponent(SensorComponent * c);
+    bool addComponent(SensorComponent * c);
 //    void deleteComponent(SensorComponent * c);
     vector<SensorComponent *> getComponents();
     void activate();

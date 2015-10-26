@@ -5,14 +5,19 @@ Group::Group(string name, bool status)
   :SensorComponent(status)
 {
   _name= name;
+  type = group;
 }
 
 Group::~Group()
 {
 }
 
-void Group::addComponent(SensorComponent * c){
+bool Group::addComponent(SensorComponent * c){
+  if(c == nullptr)
+    return false;
+
   _components.push_back(c);
+  return true;
 }
 
 /*void Group::deleteComponent(SensorComponent * c){

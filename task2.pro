@@ -12,7 +12,10 @@ SOURCES += main.cpp \
     action.cpp \
     fire_brigade.cpp \
     call_police.cpp \
-    evacuate.cpp
+    evacuate.cpp\
+    SensorComponent.cpp\
+    emergency_center.cpp\
+    group.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -25,5 +28,7 @@ HEADERS += \
     action.h \
     fire_brigade.h \
     call_police.h \
-    evacuate.h
-
+    evacuate.h\
+    SensorComponent.h\
+    emergency_center.h\
+    group.h

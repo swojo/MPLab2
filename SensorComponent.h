@@ -1,6 +1,12 @@
 #ifndef SENSORCOMPONENT_H
 #define SENSORCOMPONENT_H
 
+#include <vector>
+
+enum ComponentType{
+  sensor,
+  group
+};
 
 class SensorComponent
 {
@@ -13,6 +19,7 @@ class SensorComponent
     void setStatus(bool status);
     virtual void test()=0;
 //    virtual string Information();
+    ComponentType type;
 
   private:
     bool _status; 
